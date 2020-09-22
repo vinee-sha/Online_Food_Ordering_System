@@ -10,34 +10,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dao.CartDAO;
-import com.dao.FoodDAO;
-import com.dto.Food;
+import com.dao.UserDAO;
+import com.dto.User;
 
-@WebServlet("/Checkout")
-public class Checkout extends HttpServlet {
+@WebServlet("/GetUserData")
+public class GetUserData extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
 		String emailId = request.getParameter("emailId");
-		CartDAO cartDAO = new CartDAO(); 
-		int x = cartDAO.emptyCart(emailId);
-
-		out.println("<html>");
 		
-		if(x >= 0){
-			out.println("<h1 style='color:white;'><center>Successfully Ordered..</center></h1>");
-			out.println("</body>");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("Restaurants.jsp");
-			rd.include(request, response);
+		UserDAO userDAO = new UserDAO();
+		User user = userDAO.getUserData(emailId);
+		
+		
+		if(user != null) {
+		
+			request.setAttribute("user",user);
+			request.setAttribute("emailId",emailId);
+	
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("EditUser.jsp");
+			requestDispatcher.include(request, response); 
 
-		} 
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		doGet(request, response);
 	}
 

@@ -1,53 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" %>
+	
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
+	
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="">
 <head>
-<title>Get Your Food</title>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css"
-	media="all">
-</head>
-<%
-		String emailId = (String)session.getAttribute("emailId");
-		String food = (String)session.getAttribute("food");
-	%>
-<body id="top" class="bgded overlay"
-	style="background-image: url('images/img1.jpg');">
-	<div class="wrapper row1">
-		<header id="header" class="hoc clear">
-			<div id="logo" class="fl_left">
-				<div class="col-sm-4 col-xs-12">
-					<img src="images/logo.jpg" style="width: 50px; height: 50px" /> <font
-						color="white">Get Your Food </font>
-					<div id="gtco-logo"></div>
-				</div>
-			</div>
-			<nav id="mainav" class="fl_right">
-				<ul class="clear">
-					<li><a href="Restaurants.jsp">Restaurants</a></li>
-					<li><a class="drop" href="#">Food Items</a>
-						<ul>
-							<li><a href="Starters.jsp">Starters</a></li>
-							<li><a href="RiceItems.jsp">Rice Items</a></li>
-							<li><a href="BreakFast.jsp">Breakfast</a></li>
-							<li><a href="Curries.jsp">Curries</a></li>
-							<li><a href="Soups.jsp">Soups</a></li>
-							<li><a href="MilkShakes.jsp">Milkshakes</a></li>
-						</ul></li>
-					<li><a class="drop" href="#">Profile</a>
-						<ul>
-							<li><a href="GetCart">Cart</a></li>
-							
-							<li><a href="GetUser?emailId=<%=emailId%>">Details</a></li>
-						</ul></li>
-					<li><a href="Login.html">Logout</a></li>
-				</ul>
-			</nav>
-		</header>
-	</div>
+
+	
+	<%@include file="/header.jsp" %>
+	
 	<div class="wrapper row3">
 		<div class="hoc container clear">
 
@@ -61,7 +26,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Aloo Samosa</a>
 						</h6>
-						<a href = "GetPrice?food=samosa">Add to Cart</a>
+						<a href = "AddToCart?food=samosa&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -70,7 +35,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Baby Corn Pakoda</a>
 						</h6>
-						<a href = "GetPrice?food=pakoda">Add to Cart</a>
+						<a href = "AddToCart?food=pakoda&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -79,7 +44,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chilli Baby Corn</a>
 						</h6>
-						<a href = "GetPrice?food=baby corn">Add to Cart</a>
+						<a href = "AddToCart?food=babycorn&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -88,7 +53,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chilli Mushroom</a>
 						</h6>
-						<a href = "GetPrice?food=mushroom">Add to Cart</a>
+						<a href = "AddToCart?food=mushroom&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -97,7 +62,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">French Fries</a>
 						</h6>
-						<a href = "GetPrice?food=french fries">Add to Cart</a>
+						<a href = "AddToCart?food=frenchfries&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -106,7 +71,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Paneer 65</a>
 						</h6>
-						<a href = "GetPrice?food=paneer65">Add to Cart</a>
+						<a href = "AddToCart?food=paneer65&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -115,7 +80,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Paneer Popcorn</a>
 						</h6>
-						<a href = "GetPrice?food=paneer popcorn">Add to Cart</a>
+						<a href = "AddToCart?food=paneerpopcorn&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -124,7 +89,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">PavBhaji</a>
 						</h6>
-						<a href = "GetPrice?food=paneer pavbhaji">Add to Cart</a>
+						<a href = "AddToCart?food=paneerpavbhaji&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -133,7 +98,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Noodles</a>
 						</h6>
-						<a href = "GetPrice?food=noodles">Add to Cart</a>
+						<a href = "AddToCart?food=noodles&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -142,7 +107,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Puff</a>
 						</h6>
-						<a href = "GetPrice?food=puff">Add to Cart</a>
+						<a href = "AddToCart?food=puff&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -151,7 +116,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">salads</a>
 						</h6>
-						<a href = "GetPrice?food=salads">Add to Cart</a>
+						<a href = "AddToCart?food=salads&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -160,7 +125,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Cutlet</a>
 						</h6>
-						<a href = "GetPrice?food=cutlet">Add to Cart</a>
+						<a href = "AddToCart?food=cutlet&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -169,7 +134,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Margheruta Pizza</a>
 						</h6>
-						<a href = "GetPrice?food=pizza">Add to Cart</a>
+						<a href = "AddToCart?food=pizza&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -178,7 +143,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Salad</a>
 						</h6>
-						<a href = "GetPrice?food=salad">Add to Cart</a>
+						<a href = "AddToCart?food=salad&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -187,7 +152,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Sandwich</a>
 						</h6>
-						<a href = "GetPrice?food=sandwich">Add to Cart</a>
+						<a href = "AddToCart?food=sandwich&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<br>
@@ -200,7 +165,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Egg Omlette</a>
 						</h6>
-						<a href = "GetPrice?food=omlette">Add to Cart</a>
+						<a href = "AddToCart?food=omlette&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -209,7 +174,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Egg Noodles</a>
 						</h6>
-						<a href = "GetPrice?food=egg noodles">Add to Cart</a>
+						<a href = "AddToCart?food=eggnoodles&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -218,7 +183,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Egg Sandwich</a>
 						</h6>
-						<a href = "GetPrice?food=egg sandwich">Add to Cart</a>
+						<a href = "AddToCart?food=eggsandwich&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -227,7 +192,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken 65</a>
 						</h6>
-						<a href = "GetPrice?food=chicken 65">Add to Cart</a>
+						<a href = "AddToCart?food=chicken65&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -236,7 +201,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Noodles</a>
 						</h6>
-						<a href = "GetPrice?food=chicken noodles">Add to Cart</a>
+						<a href = "AddToCart?food=chickennoodles&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -245,7 +210,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Lollipop</a>
 						</h6>
-						<a href = "GetPrice?food=chicken lollipop">Add to Cart</a>
+						<a href = "AddToCart?food=chickenlollipop&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -254,7 +219,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">chicken Manchuria</a>
 						</h6>
-						<a href = "GetPrice?food=chicken manchuria">Add to Cart</a>
+						<a href = "AddToCart?food=chickenmanchuria&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -263,7 +228,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Nuggets</a>
 						</h6>
-						<a href = "GetPrice?food=chicken nuggets">Add to Cart</a>
+						<a href = "AddToCart?food=chickennuggets&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -272,7 +237,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">chicken pizza</a>
 						</h6>
-						<a href = "GetPrice?food=chicken pizza">Add to Cart</a>
+						<a href = "AddToCart?food=chickenpizza&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -281,7 +246,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Popcorn</a>
 						</h6>
-						<a href = "GetPrice?food=chicken popcorn">Add to Cart</a>
+						<a href = "AddToCart?food=chickenpopcorn&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -290,7 +255,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chilli Chicken</a>
 						</h6>
-						<a href = "GetPrice?food=chilli chicken">Add to Cart</a>
+						<a href = "AddToCart?food=chillichicken&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -299,7 +264,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Crispy Chicken Burger</a>
 						</h6>
-						<a href = "GetPrice?food=chicken burger">Add to Cart</a>
+						<a href = "AddToCart?food=chickenburger&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -308,7 +273,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Grilled Chicken Tikka</a>
 						</h6>
-						<a href = "GetPrice?food=chicken tikka">Add to Cart</a>
+						<a href = "AddToCart?food=chickentikka&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -317,7 +282,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Roasted Tandoori</a>
 						</h6>
-						<a href = "GetPrice?food=tandoori">Add to Cart</a>
+						<a href = "AddToCart?food=tandoori&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -326,7 +291,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Sandwich</a>
 						</h6>
-						<a href = "GetPrice?food=chicken sandwich">Add to Cart</a>
+						<a href = "AddToCart?food=chickensandwich&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third first btmspace-30">
@@ -335,7 +300,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Spicy Chicken Burger</a>
 						</h6>
-						<a href = "GetPrice?food=chicken burger">Add to Cart</a>
+						<a href = "AddToCart?food=chickenburger&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -344,7 +309,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chilli Chicken</a>
 						</h6>
-						<a href = "GetPrice?food=chilli chicken">Add to Cart</a>
+						<a href = "AddToCart?food=chillichicken&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 				<li class="one_third btmspace-30">
@@ -353,7 +318,7 @@
 						<h6 class="heading font-x1">
 							<a href="#">Chicken Legpiece</a>
 						</h6>
-						<a href = "GetPrice?food=chicken legpiece">Add to Cart</a>
+						<a href = "AddToCart?food=chickenlegpiece&emailId=<%=emailId%>">Add to Cart</a>
 					</article>
 				</li>
 

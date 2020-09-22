@@ -1,5 +1,6 @@
 package com.dto;
 
+
 public class User {
 	private String emailId;
 	private String phone;
@@ -10,6 +11,7 @@ public class User {
 	private String district;
 	private int pincode;
 	private String address;
+	
 	
 	
 	public User() {

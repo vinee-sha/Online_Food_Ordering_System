@@ -11,8 +11,9 @@ import com.db.DbConnection;
 import com.dto.User;
 
 public class UserDAO {
-
-	public User getUser(String emailId, String password) {
+	
+	
+	public User getUserData(String emailId, String password) {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -48,44 +49,8 @@ public class UserDAO {
 		return null;
 	}
 
-	public User getUser(String emailId) {
-
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		connection = DbConnection.getConnection();
-		String SELECT = "select * from gyf where emailid = ?";
-
-		try {
-			preparedStatement = connection.prepareStatement(SELECT);
-			preparedStatement.setString(1, emailId);
-			resultSet = preparedStatement.executeQuery();
-
-			if(resultSet.next()){
-				User user = new User();
-
-				user.setPincode(resultSet.getInt(6));
-				user.setPhone(resultSet.getString(2));
-				user.setName(resultSet.getString(1));
-				user.setCity(resultSet.getString(5));
-				user.setAddress(resultSet.getString(4));
-				user.setState(resultSet.getString(8));
-				user.setDistrict(resultSet.getString(7));
-				user.setEmailId(resultSet.getString(3));
-				user.setPassword(resultSet.getString(9));
-
-				return user;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-
-	
-	public int register(User user) {
+	public int registerUser(User user) {
+		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int result = 0;
@@ -93,7 +58,7 @@ public class UserDAO {
 		connection = DbConnection.getConnection();
 
 		String INSERT = "insert into gyf values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+		
 		try {
 			preparedStatement = connection.prepareStatement(INSERT);
 			
@@ -126,10 +91,9 @@ public class UserDAO {
 		}
 		return 0;
 	}
-	
-	
 
-	public int update(User user) {
+	public int updateUserData(User user) {
+		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		int result = 0;
@@ -170,9 +134,42 @@ public class UserDAO {
 			}
 		}		
 		return 0;
-		
+	}
+
+	public User getUserData(String emailId) {
+		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		connection = DbConnection.getConnection();
+		String SELECT = "select * from gyf where emailid = ?";
+
+		try {
+			preparedStatement = connection.prepareStatement(SELECT);
+			preparedStatement.setString(1, emailId);
+			resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+				User user = new User();
+
+				user.setPincode(resultSet.getInt(6));
+				user.setPhone(resultSet.getString(2));
+				user.setName(resultSet.getString(1));
+				user.setCity(resultSet.getString(5));
+				user.setAddress(resultSet.getString(4));
+				user.setState(resultSet.getString(8));
+				user.setDistrict(resultSet.getString(7));
+				user.setEmailId(resultSet.getString(3));
+				user.setPassword(resultSet.getString(9));
+
+				return user;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	
-
 }

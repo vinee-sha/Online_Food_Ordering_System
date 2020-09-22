@@ -14,25 +14,22 @@ import com.dao.CartDAO;
 import com.dao.FoodDAO;
 import com.dto.Food;
 
-@WebServlet("/Checkout")
-public class Checkout extends HttpServlet {
+@WebServlet("/DeleteCartItem")
+public class DeleteCartItem extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-
-		String emailId = request.getParameter("emailId");
-		CartDAO cartDAO = new CartDAO(); 
-		int x = cartDAO.emptyCart(emailId);
-
-		out.println("<html>");
 		
-		if(x >= 0){
-			out.println("<h1 style='color:white;'><center>Successfully Ordered..</center></h1>");
-			out.println("</body>");
-			
-			RequestDispatcher rd = request.getRequestDispatcher("Restaurants.jsp");
-			rd.include(request, response);
+		String food = request.getParameter("food");
+		String emailId = request.getParameter("emailId");
+		
+		CartDAO cartDAO = new CartDAO(); 
+		int x = cartDAO.deleteFoodItem(food, emailId);
+
+		if(x > 0){
+			RequestDispatcher rd = request.getRequestDispatcher("GetCartDetails");
+			rd.forward(request, response);
 
 		} 
 	}
