@@ -56,7 +56,7 @@
 			<li><a class="drop" href="#">Profile</a>
 				<ul>
 					<li><a href="GetCartDetails?emailId=<%=emailId%>">Cart</a></li>
-					
+					<li><a href="GetOrders?emailId=<%=emailId%>">Orders</a></li>
 					<li><a href="GetUserData?emailId=<%=emailId%>">Details</a></li>
 				</ul></li>
 			<li><a href="Login.html">Logout</a></li>

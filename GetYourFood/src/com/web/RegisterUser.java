@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dao.UserDAO;
 import com.dto.User;
@@ -37,6 +38,10 @@ public class RegisterUser extends HttpServlet {
 		int result = userDAO.registerUser(user);                
 		
 		if(result > 0){
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("emailId", emailId);
+			session.setAttribute("password", password);
 			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Restaurants.jsp");
 			requestDispatcher.include(request, response); 

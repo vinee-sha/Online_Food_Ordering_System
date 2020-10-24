@@ -1,6 +1,6 @@
 package com.dto;
 
-public class Cart {
+public class Orders {
 	private String food;
 	private int price;
 	private String emailId;
@@ -17,35 +17,35 @@ public class Cart {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
 	public int getCount() {
 		return count;
 	}
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public String getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
+	}
 	@Override
 	public String toString() {
-		return "Cart [food=" + food + ", price=" + price + ", emailId=" + emailId + "]";
+		return "Orders [food=" + food + ", price=" + price + ", emailId=" + emailId + "]";
 	}
-	public Cart(String food, int price, String emailId) {
+	public Orders(String food, int price, String emailId) {
 		super();
 		this.food = food;
 		this.price = price;
 		this.emailId = emailId;
 	}
-	public Cart(String food, int price, int count) {
+	public Orders(String food, int price, int count) {
 		super();
 		this.food = food;
 		this.price = price;
 		this.count = count;
 	}
-	public Cart() {
+	public Orders() {
 		// TODO Auto-generated constructor stub
 	}
 }

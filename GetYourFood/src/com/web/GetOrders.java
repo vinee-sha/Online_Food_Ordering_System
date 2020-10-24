@@ -17,32 +17,27 @@ import javax.servlet.http.HttpSession;
 
 import com.dao.CartDAO;
 import com.dao.FoodDAO;
+import com.dao.OrdersDAO;
 import com.dto.Cart;
 import com.dto.Food;
+import com.dto.Orders;
 
-@WebServlet("/GetCartDetails")
-public class GetCartDetails extends HttpServlet {
+@WebServlet("/GetOrders")
+public class GetOrders extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String emailId = request.getParameter("emailId");
-		
 		CartDAO cartDAO = new CartDAO();
-		List<Cart> cartFood = cartDAO.getCart(emailId);
-		
+		OrdersDAO ordersDAO = new OrdersDAO();
+		List<Orders> orderedFood = ordersDAO.getOrders(emailId);
 		int cost = cartDAO.foodCost(emailId);
-		
-		
-		if(cartFood != null){
-			request.setAttribute("cartFood", cartFood);
-			request.setAttribute("cost", cost);
-			RequestDispatcher rd = request.getRequestDispatcher("Cart.jsp");
-			rd.include(request, response);
-		}
-		else{
-			out.println("<h3 style='color:white;'><center>Cart is Empty</center></h3>");
-		}
+		request.setAttribute("orderedFood", orderedFood);
+		request.setAttribute("cost", cost);
+		RequestDispatcher rd = request.getRequestDispatcher("Orders.jsp");
+		rd.include(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

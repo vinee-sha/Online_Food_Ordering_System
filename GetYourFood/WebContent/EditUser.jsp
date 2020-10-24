@@ -34,56 +34,56 @@
 										<form action="EditUserData" method="post">
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="name" class="form-control"
+													<input type="text" name="name" required="required" class="form-control"
 														value="${user.name}" placeholder = "Name">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="phone" class="form-control"
+													<input type="text" name="phone" required="required" class="form-control"
 														value="${user.phone}" placeholder = "Phone">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="emailId" class="form-control"
-														value="${user.emailId}" placeholder = "EmailId">
+													<input type="text" name="emailId" required="required" class="form-control"
+														value="${user.emailId}" placeholder = "EmailId" readonly>
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="address" class="form-control"
+													<input type="text" name="address" required="required" class="form-control"
 														value="${user.address}" placeholder = "Address">
 
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="city" class="form-control"
+													<input type="text" name="city" required="required" class="form-control"
 														value="${user.city}" placeholder = "City">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="pincode" class="form-control"
+													<input type="text" name="pincode" required="required" class="form-control"
 														value="${user.pincode}" placeholder = "Pincode">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="district" class="form-control"
+													<input type="text" name="district" required="required" class="form-control"
 														value="${user.district}" placeholder = "District">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="state" class="form-control"
+													<input type="text" name="state" required="required" class="form-control"
 														value="${user.state}" placeholder = "State">
 												</div>
 											</div>
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="password" name="password" class="form-control"
+													<input type="password" name="password" required="required" class="form-control"
 														value="${user.password}"  placeholder = "Password">
 												</div>
 											</div>

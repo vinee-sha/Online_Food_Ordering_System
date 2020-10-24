@@ -12,7 +12,8 @@
 
 	
 	<%@include file="/header.jsp" %>
-
+	
+	
 	<div class="wrapper row3">
 		<div class="hoc container clear">
 
@@ -30,13 +31,36 @@
 								<div class="tab">
 
 									<div class="tab-content">
-
-										<form action="Checkout" method="post">
+										<form action="AddToOrders?emailId=<%=emailId%>" method="post">
 											<div class="row form-group">
 												<div class="col-md-0">
-													<input type="text" name="address" class="form-control" required="required"
-														placeholder="address">
+													<input type="text" name="address" class="form-control"
+														value="${user.address}" placeholder = "Address">
 
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-0">
+													<input type="text" name="city" class="form-control"
+														value="${user.city}" placeholder = "City">
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-0">
+													<input type="text" name="pincode" class="form-control"
+														value="${user.pincode}" placeholder = "Pincode">
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-0">
+													<input type="text" name="district" class="form-control"
+														value="${user.district}" placeholder = "District">
+												</div>
+											</div>
+											<div class="row form-group">
+												<div class="col-md-0">
+													<input type="text" name="state" class="form-control"
+														value="${user.state}" placeholder = "State">
 												</div>
 											</div>
 											<div class="row form-group">
@@ -60,8 +84,6 @@
 	</div>
 
 
-
-	</div>
 </body>
 
 </html>

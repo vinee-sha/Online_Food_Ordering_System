@@ -2,8 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,7 +14,6 @@
 
 <%@include file="/header.jsp"%>
 
-<c:set var="cost" value="${cost}" />
 <div class="wrapper row3">
 	<div class="hoc container clear">
 
@@ -28,7 +28,8 @@
 						<div class="col-md-4 col-md-push-1  animate-box"
 							data-animate-effect="fadeInRight">
 							<c:choose>
-								<c:when test="${cost!=0}">
+								<c:when test="${fn:length(orderedFood) > 0}">
+
 									<div class="tab">
 
 										<div class="tab-content">
@@ -38,40 +39,34 @@
 												<tr>
 													<th>Food</th>
 													<th>Price</th>
-													<th colspan=1></th>
-													<th>Quantity</th>
-													<th colspan=1></th>
+													<th>Ordered Quantity</th>
+													<th colspan=2></th>
 												</tr>
-												<c:forEach var="cartItem" items="${cartFood}">
+												<c:forEach var="orderedItem" items="${orderedFood}">
 													<tr>
-														<td>${cartItem.food}</td>
-														<td>${cartItem.price}</td>
-														
-														<td><a href='AddToCart?food=${cartItem.food}&emailId=<%=emailId%>'>+</a></td>
-														<td><center>${cartItem.count}</center></td>
-														<td><a href='DeleteCartItem?food=${cartItem.food}&emailId=<%=emailId%>'>-</a></td>
+														<td>${orderedItem.food}</td>
+														<td>${orderedItem.price}</td>
+														<td>${orderedItem.count}</td>
+														<td><a
+															href='AddToCart?food=${orderedItem.food}&emailId=<%=emailId%>'>Order
+																Again</a></td>
 
 													</tr>
 												</c:forEach>
 
 											</table>
-											<h4>Total cost : ${cost}</h4>
 										</div>
-										<form action="Checkout" method="post">
-											<input type="submit" class="btn btn-primary btn-block"
-												value="Checkout">
-										</form>
 
 
 									</div>
-								</c:when>
-								<c:otherwise>
-									<h4><center>Cart is Empty</center></h4>
-								</c:otherwise>
-							</c:choose>
-
 						</div>
-
+						</c:when>
+						<c:otherwise>
+							<h4>
+								<center>No Previous Orders</center>
+							</h4>
+						</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>

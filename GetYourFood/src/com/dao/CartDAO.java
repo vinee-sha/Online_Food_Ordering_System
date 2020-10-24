@@ -24,7 +24,7 @@ public class CartDAO {
 		String INSERT = "INSERT into cart values(?,?,?)";
 
 		try {
-			
+
 			preparedStatement = connection.prepareStatement(INSERT);
 			preparedStatement.setInt(2, price);
 			preparedStatement.setString(1, food);
@@ -50,17 +50,17 @@ public class CartDAO {
 	}
 
 	public List<Cart> getCart(String emailId) {
-		
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
 		connection = DbConnection.getConnection();
-		String SELECT = "Select * from cart WHERE emailId=?";
+		String SELECT = "SELECT food , price, COUNT(food) from cart where emailId=? group by food;";
 
 		try {
 			preparedStatement = connection.prepareStatement(SELECT);
-			
+
 			preparedStatement.setString(1, emailId);
 
 			resultSet = preparedStatement.executeQuery();
@@ -71,8 +71,8 @@ public class CartDAO {
 
 				cart.setPrice(resultSet.getInt(2));
 				cart.setFood(resultSet.getString(1));
-				cart.setEmailId(resultSet.getString(3));
-				
+				cart.setCount(resultSet.getInt(3));
+
 				cartFood.add(cart);
 			}
 			return cartFood;				
@@ -95,7 +95,7 @@ public class CartDAO {
 	}
 
 	public int foodCost(String emailId) {
-		
+
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -110,10 +110,49 @@ public class CartDAO {
 			int cost = 0;
 
 			while(resultSet.next()) {
-				
+
 				cost = cost + resultSet.getInt(2);
 			}
 			return cost;				
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		finally {
+			try {
+				if(connection != null) {
+					resultSet.close();
+					preparedStatement.close();
+					connection.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+
+	}
+
+	public int foodItems(String emailId) {
+
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		connection = DbConnection.getConnection();
+		String SELECT = "Select * from cart where emailId=?";
+
+		try {
+			preparedStatement = connection.prepareStatement(SELECT);
+			preparedStatement.setString(1, emailId);
+			resultSet = preparedStatement.executeQuery();
+			int items = 0;
+
+			while(resultSet.next()) {
+
+				items = items + 1;
+			}
+			return items;				
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -149,7 +188,7 @@ public class CartDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return 0;
 	}
 
@@ -168,8 +207,8 @@ public class CartDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return 0;
 	}
-	
+
 }
